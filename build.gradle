@@ -14,6 +14,7 @@ buildscript {
 apply plugin: 'kotlin' // Required for Kotlin integration
 apply plugin: "kotlin-spring" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
     baseName = 'gs-rest-service'
@@ -27,7 +28,7 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
     compile 'org.springframework.boot:spring-boot-starter-web'
-//    compile "org.springframework.cloud:spring-cloud-starter-sleuth:2.0.1.RELEASE"
     compile("org.aspectj:aspectjweaver:1.8.8")
+    compile('org.springframework.cloud:spring-cloud-starter-sleuth:2.0.1.RELEASE')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

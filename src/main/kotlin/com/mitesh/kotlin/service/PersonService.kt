@@ -6,6 +6,14 @@ import org.springframework.stereotype.Service
 @Service
 class PersonService {
     fun retrievePerson(personId: Int) : Person {
-        return Person(id = personId, name = "XYZ");
+        return Person(id = personId, name = "XYZ")
+    }
+
+    fun savePerson(person: Person) : Person {
+        return person.copy(name = person.name + " Saved")
+    }
+
+    fun retrieveAllPersons() {
+        throw RuntimeException("Person List Not Found.....")
     }
 }

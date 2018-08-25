@@ -27,6 +27,7 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
     compile 'org.springframework.boot:spring-boot-starter-web'
+//    compile "org.springframework.cloud:spring-cloud-starter-sleuth:2.0.1.RELEASE"
     compile("org.aspectj:aspectjweaver:1.8.8")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

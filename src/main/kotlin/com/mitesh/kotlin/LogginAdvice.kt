@@ -8,6 +8,10 @@ import org.aspectj.lang.annotation.After
 import org.aspectj.lang.annotation.AfterReturning
 import org.aspectj.lang.annotation.Before
 import org.slf4j.LoggerFactory
+import org.aspectj.lang.ProceedingJoinPoint
+import org.aspectj.lang.annotation.Around
+
+
 
 
 @Component
@@ -26,7 +30,7 @@ class LogginAdvice {
     @After("execution(* com.mitesh.kotlin.service.PersonService.retrievePerson(..))")
     fun logAfter(joinPoint: JoinPoint) {
         logger.info("logAfter() is running!")
-        logger.info("Method : ${joinPoint.signature.name} Returned :")
+        logger.info("Method : ${joinPoint.signature.name}")
     }
 
     @AfterReturning("execution(* com.mitesh.kotlin.service.PersonService.retrievePerson(..))",
@@ -34,5 +38,20 @@ class LogginAdvice {
     fun logAfterReturning(joinPoint: JoinPoint, result: Any?) {
         logger.info("logAfterReturning() is running!")
         logger.info("Method : ${joinPoint.signature.name} Returned : ${ObjectMapper().writeValueAsString(result)}")
+    }
+
+
+    @Around("execution(* com.mitesh.kotlin.service.PersonService.savePerson(..))")
+    @Throws(Throwable::class)
+    fun logAround(joinPoint: ProceedingJoinPoint) : Any?{
+
+        logger.info("logAround() is running!")
+        logger.info("Calling : ${joinPoint.signature.name} with Parameter :  ${ObjectMapper().writeValueAsString(joinPoint.args)}")
+
+        val result = joinPoint.proceed() //continue on the intercepted method
+
+        logger.info("Method : ${joinPoint.signature.name} Returned :  ${ObjectMapper().writeValueAsString(result)}")
+
+        return result
     }
 }

@@ -16,4 +16,9 @@ class ApplicationExceptionHandler{
         logger.error(exception.message, exception)
     }
 
+    @ExceptionHandler(ArrayIndexOutOfBoundsException::class)
+    fun someMethod(exception: RuntimeException, request : WebRequest){
+        logger.error(exception.message, exception)
+    }
+
 }

@@ -9,6 +9,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
         classpath group: 'com.natpryce', name: 'hamkrest', version: '1.5.0.0'
+        classpath "org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE"
     }
 }
 
@@ -34,5 +35,5 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-sleuth:1.2.4.RELEASE')
     compile group: 'com.natpryce', name: 'hamkrest', version: '1.5.0.0'
     compile("org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE")
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('org.springframework.boot:spring-boot-starter-test')
 }
